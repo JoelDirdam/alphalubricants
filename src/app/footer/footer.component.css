@@ -1,0 +1,15 @@
+footer {
+    background-color: #001F54;
+    color: white;
+    padding: 1rem 0;
+  }
+  
+footer .container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+footer .social-media a {
+margin-left: 1rem;
+}

@@ -1,0 +1,32 @@
+.products {
+    text-align: center;
+}
+  
+.product {
+display: inline-block;
+margin: 1rem;
+text-align: center;
+}
+
+.product img {
+width: 150px;
+height: 150px;
+}
+
+.product h2 {
+font-size: 1.2rem;
+margin: 0.5rem 0;
+}
+
+.product button {
+margin: 0.5rem 0;
+padding: 0.5rem 1rem;
+border: none;
+color: white;
+background-color: #001F54;
+cursor: pointer;
+}
+
+.product button:hover {
+background-color: #003087;
+}
