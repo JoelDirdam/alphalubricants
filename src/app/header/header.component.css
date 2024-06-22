@@ -1,0 +1,15 @@
+@media (min-width: 768px) {
+    #menu-button {
+        display: none;
+    }
+}
+
+#menu a {
+    display: flex;
+    align-items: center;
+}
+
+#mobile-menu a {
+    display: flex;
+    align-items: center;
+}

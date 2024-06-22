@@ -1,22 +1,54 @@
-<header class="bg-blue-900 text-white py-4">
+<header class="bg-blue-900 text-white py-4 px-4">
   <div class="container mx-auto flex justify-between items-center">
     <div class="flex items-center">
-      <img src="/public/img/logo.png" alt="Alpha Lubricants" class="h-12">
-      <span class="ml-4 text-2xl font-bold">Alpha Lubricants</span>
+      <img src="/img/logo.png" alt="Alpha Lubricants" class="h-12">
     </div>
-    <nav class="flex space-x-8">
+    <button id="menu-button" class="block md:hidden">
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+    <nav id="menu" class="hidden md:flex space-x-8">
       <a href="#" class="flex items-center space-x-2">
-        <img src="/public/img/products-icon.png" alt="Nuestros productos" class="h-6">
+        <img src="/img/products-icon.png" alt="Nuestros productos" class="h-6">
         <span>Nuestros productos</span>
       </a>
       <a href="#" class="flex items-center space-x-2 text-gray-500">
-        <img src="/public/img/about-us-hiden-icon.png" alt="Acerca de nosotros" class="h-6">
+        <img src="/img/about-us-hiden-icon.png" alt="Acerca de nosotros" class="h-6">
         <span>Acerca de nosotros</span>
       </a>
       <a href="#" class="flex items-center space-x-2 text-gray-500">
-        <img src="/public/img/contact-hiden-icon.png" alt="Contáctanos" class="h-6">
+        <img src="/img/contact-hiden-icon.png" alt="Contáctanos" class="h-6">
         <span>Contáctanos</span>
       </a>
     </nav>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="fixed inset-0 top-0 right-0 bg-blue-900 text-white p-4 hidden md:hidden">
+    <div class="flex justify-between items-center mb-4">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <img src="/img/logo.png" alt="Alpha Lubricants" class="h-12">
+      </div>
+      <!-- Close button -->
+      <button id="close-button">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <a href="#" class="text-2xl space-x-2 mb-4">
+      <img src="/img/products-icon.png" alt="Nuestros productos" class="h-6 inline mr-1">
+      <span>Nuestros productos</span>
+    </a>
+    <a href="#" class="text-2xl text-gray-500 space-x-2 mb-4">
+      <img src="/img/about-us-hiden-icon.png" alt="Acerca de nosotros" class="h-6 inline">
+      <span>Acerca de nosotros</span>
+    </a>
+    <a href="#" class="text-2xl text-gray-500 space-x-2">
+      <img src="/img/contact-hiden-icon.png" alt="Contáctanos" class="h-6 inline">
+      <span>Contáctanos</span>
+    </a>
   </div>
 </header>
