@@ -9,16 +9,26 @@
       </svg>
     </button>
     <nav id="menu" class="hidden md:flex space-x-8">
-      <a href="#" class="flex items-center space-x-2">
-        <img src="/img/products-icon.png" alt="Nuestros productos" class="h-6">
-        <span>Nuestros productos</span>
+      <a href="/" [ngClass]="{ 'text-white': isActive(''), 'text-gray-500': !isActive('') }"
+        class="flex flex-col items-center">
+        <img [src]="getImagePath('home')" alt="Inicio" class="h-6 mb-2">
+        <span>Inicio</span>
       </a>
-      <a href="#" class="flex items-center space-x-2 text-gray-500">
-        <img src="/img/about-us-hiden-icon.png" alt="Acerca de nosotros" class="h-6">
+      <a href="/products"
+        [ngClass]="{ 'text-white': isActive('/products'), 'text-gray-500': !isActive('/products') }"
+        class="flex flex-col items-center">
+        <img [src]="getImagePath('products')" alt="Nuestros productos" class="h-6 mb-2">
+        <span>Productos</span>
+      </a>
+      <a href="/about" [ngClass]="{ 'text-white': isActive('/about'), 'text-gray-500': !isActive('/about') }"
+        class="flex flex-col items-center">
+        <img [src]="getImagePath('about-us')" alt="Acerca de nosotros" class="h-6 mb-2">
         <span>Acerca de nosotros</span>
       </a>
-      <a href="#" class="flex items-center space-x-2 text-gray-500">
-        <img src="/img/contact-hiden-icon.png" alt="Contáctanos" class="h-6">
+      <a href="/contact"
+        [ngClass]="{ 'text-white': isActive('/contact'), 'text-gray-500': !isActive('/contact') }"
+        class="flex flex-col items-center">
+        <img [src]="getImagePath('contact')" alt="Contáctanos" class="h-6 mb-2">
         <span>Contáctanos</span>
       </a>
     </nav>
@@ -38,17 +48,29 @@
         </svg>
       </button>
     </div>
-    <a href="#" class="text-2xl space-x-2 mb-4">
-      <img src="/img/products-icon.png" alt="Nuestros productos" class="h-6 inline mr-1">
-      <span>Nuestros productos</span>
-    </a>
-    <a href="#" class="text-2xl text-gray-500 space-x-2 mb-4">
-      <img src="/img/about-us-hiden-icon.png" alt="Acerca de nosotros" class="h-6 inline">
-      <span>Acerca de nosotros</span>
-    </a>
-    <a href="#" class="text-2xl text-gray-500 space-x-2">
-      <img src="/img/contact-hiden-icon.png" alt="Contáctanos" class="h-6 inline">
-      <span>Contáctanos</span>
-    </a>
+    <div class="flex flex-col space-y-4">
+      <a href="/" [ngClass]="{ 'text-white': isActive(''), 'text-gray-500': !isActive('') }"
+        class="text-1xl space-x-2 flex items-center">
+        <img [src]="getImagePath('home')" alt="Inicio" class="w-6 menu-icon">
+        <span>Inicio</span>
+      </a>
+      <a href="/products"
+        [ngClass]="{ 'text-white': isActive('/products'), 'text-gray-500': !isActive('/products') }"
+        class="text-1xl space-x-2 flex items-center">
+        <img [src]="getImagePath('products')" alt="Nuestros productos" class="w-6 menu-icon">
+        <span>Productos</span>
+      </a>
+      <a href="/about" [ngClass]="{ 'text-white': isActive('/about'), 'text-gray-500': !isActive('/about') }"
+        class="text-1xl space-x-2 flex items-center">
+        <img [src]="getImagePath('about')" alt="Acerca de nosotros" class="w-6 menu-icon">
+        <span>Acerca de nosotros</span>
+      </a>
+      <a href="/contact"
+        [ngClass]="{ 'text-white': isActive('/contact'), 'text-gray-500': !isActive('/contact') }"
+        class="text-1xl space-x-2 flex items-center">
+        <img [src]="getImagePath('contact')" alt="Contáctanos" class="w-6 menu-icon">
+        <span>Contáctanos</span>
+      </a>
+    </div>
   </div>
 </header>

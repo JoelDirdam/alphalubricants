@@ -8,6 +8,17 @@ module.exports = {
       gap: {
         '16': '10rem',
       },
+      colors: {
+        red: {
+          500: '#F04438',
+        },
+        yellow: {
+          500: '#FFD000',
+        },
+      },
+      borderRadius: {
+        'xlg': '0.9rem',
+      },
     },
   },
   plugins: [],

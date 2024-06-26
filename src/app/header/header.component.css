@@ -4,6 +4,17 @@
     }
 }
 
+#mobile-menu {
+    z-index: 1000;
+    /* Asegura que esté por encima del resto del contenido */
+    width: 100%;
+    /* Cubre todo el ancho de la pantalla */
+    height: 100%;
+    /* Cubre toda la altura de la pantalla */
+    overflow-y: auto;
+    /* Permite el desplazamiento si el contenido es largo */
+}
+
 #menu a {
     display: flex;
     align-items: center;
@@ -12,4 +23,17 @@
 #mobile-menu a {
     display: flex;
     align-items: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.space-y-4>*+* {
+    margin-top: 1rem;
+    /* Ajusta el espaciado vertical según sea necesario */
 }
