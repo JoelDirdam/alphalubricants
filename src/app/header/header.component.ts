@@ -43,6 +43,6 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   getImagePath(page: string): string {
-    return this.isActive(page) ? `/img/${page}-icon.png` : `/img/${page}-hidden-icon.png`;
+    return this.isActive(page) ? `/img/header/${page}-icon.png` : `/img/header/${page}-hidden-icon.png`;
   }
 }

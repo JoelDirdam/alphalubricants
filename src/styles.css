@@ -26,12 +26,9 @@ body {
 .products-container {
     margin-left: auto;
     margin-right: auto;
-    max-width: 1500px;
-    /* Ajusta este valor según el ancho deseado */
-    padding-left: 16px;
-    /* Ajusta el valor del padding según los márgenes deseados */
-    padding-right: 16px;
-    /* Ajusta el valor del padding según los márgenes deseados */
+    max-width: 1500px; /* Ajusta este valor según el ancho deseado */
+    padding-left: 16px; /* Ajusta el valor del padding según los márgenes deseados */
+    padding-right: 16px; /* Ajusta el valor del padding según los márgenes deseados */
 }
 
 .products {
@@ -51,4 +48,10 @@ body {
 
 .hidden-input {
     display: none;
+}
+
+button, input:where([type=button]), input:where([type=reset]), input:where([type=submit]) {
+    -webkit-appearance: button;
+    background-color: white;
+    background-image: none;
 }

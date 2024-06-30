@@ -1,0 +1,17 @@
+.selected-product {
+    background-color: #4576E8; /* Fondo azul oscuro */
+    padding: 20px;
+    border-radius: 10px;
+    color: white; /* Texto blanco */
+    /* Add a inner shadow around the container*/
+    box-shadow: inset 0 0 20px #000000;
+}
+
+.selected-product img { 
+    width: 100%; /* Asegura que la imagen se ajuste al contenedor */
+}
+
+.selected-product p {
+    margin-top: 10px;
+}
+  
