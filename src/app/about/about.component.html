@@ -1,1 +1,65 @@
-<p>about works!</p>
+<div class="w-full">
+    <div class="bg-cover bg-center bg-about-first">
+        <section
+            class="container mx-auto max-w-screen-lg flex flex-col items-center justify-center h-screen md:h-[80vh] w-full p-5 box-border">
+            <div class="text-center">
+                <h1 class="text-2xl md:text-5xl lg:text-7xl text-white font-bold">¿Quienes somos?</h1>
+                <p class="text-white pt-6
+                    text-base md:text-lg lg:text-xl">En Alpha Lubricants, nos dedicamos a fabricar y distribuir aceites
+                    para motor y aditivos para gasolina. Nos enfocamos en ofrecer productos de alta calidad a precios
+                    accesibles, asegurando que nuestros clientes reciban el mejor rendimiento y protección para sus
+                    vehículos. Utilizamos tecnología más avanzada de procedencia estadounidense y cumplimos con los más
+                    estrictos estándares de calidad para diseñar productos que optimizan el funcionamiento de tus
+                    motores y sistemas de combustible. Creemos que todos merecen acceso a productos de calidad que
+                    prolonguen la vida útil de sus vehículos sin comprometer su presupuesto. En Alpha Lubricants,
+                    estamos aquí para proporcionarte soluciones confiables y eficaces para mantener tu motor en óptimas
+                    condiciones.</p>
+            </div>
+        </section>
+    </div>
+    <div class="bg-cover bg-center bg-about-second">
+        <section class="container mx-auto max-w-screen-lg flex flex-col items-center justify-center h-screen md:h-[80vh] w-full p-5 box-border">
+            <!-- Grid para pantallas medianas y grandes -->
+            <div class="hidden md:flex flex-col md:items-center lg:flex-row lg:items-start w-full space-y-8 lg:space-y-0 lg:space-x-8">
+                <div class="w-full md:max-w-screen-sm lg:w-1/3 p-8 bg-white rounded-lg shadow-lg flex flex-col items-center flex-1 h-full">
+                    <img src="/img/about/mision.png" alt="Misión" class="w-1/4 md:w-2/5 lg:w-1/3 mb-4">
+                    <p class="text-blue-900 text-lg md:text-xl lg:text-2xl font-bold mt-2">Misión</p>
+                    <p class="text-blue-900 text-base md:text-lg lg:text-lg mt-5">
+                        Nuestra misión es brindar productos lubricantes de alta calidad que mejoren el rendimiento y la durabilidad de los motores, ofreciendo a nuestros clientes la tranquilidad de saber que sus vehículos y equipos están protegidos con lo mejor.
+                    </p>
+                </div>
+                <div class="w-full md:max-w-screen-sm lg:w-1/3 p-8 bg-white rounded-lg shadow-lg flex flex-col items-center flex-1 h-full">
+                    <img src="/img/about/vision.png" alt="Visión" class="w-1/4 md:w-2/5 lg:w-1/3 mb-4">
+                    <p class="text-blue-900 text-lg md:text-xl lg:text-2xl font-bold mt-2">Visión</p>
+                    <p class="text-blue-900 text-base md:text-lg lg:text-lg mt-5">
+                        Ser la marca líder en aceites y lubricantes, reconocida por nuestra innovación, calidad y compromiso con la satisfacción del cliente.
+                    </p>
+                </div>
+                <div class="w-full md:max-w-screen-sm lg:w-1/3 p-8 bg-white rounded-lg shadow-lg flex flex-col items-center flex-1 h-full">
+                    <img src="/img/about/valores.png" alt="Valores" class="w-1/4 md:w-2/5 lg:w-1/3 mb-4">
+                    <p class="text-blue-900 text-lg md:text-xl lg:text-2xl font-bold mt-2">Valores</p>
+                    <p class="text-blue-900 text-base md:text-lg lg:text-lg mt-5">
+                        <strong>Calidad:</strong> Altos estándares de calidad en todos nuestros productos. <br>
+                        <strong>Innovación:</strong> Tecnología desarrollada para soluciones avanzadas para las necesidades de nuestros clientes. <br>
+                        <strong>Sostenibilidad:</strong> Estamos comprometidos con prácticas sostenibles que minimicen nuestro impacto ambiental.
+                    </p>
+                </div>
+            </div>
+            <!-- Carrusel para pantallas pequeñas -->
+            <div class="block md:hidden w-11/12 h-[80vh] mt-8">
+                <p-carousel [value]="aboutItems" [numVisible]="1" [numScroll]="1" [autoplayInterval]="autoplayInterval" class="w-full h-full">
+                    <ng-template let-item pTemplate="item">
+                        <div class="mx-2">
+                            <div class="w-full p-8 bg-white rounded-lg shadow-lg flex flex-col items-center flex-1">
+                                <img [src]="item.image" [alt]="item.title" class="w-1/4 md:w-2/5 lg:w-1/3 mb-4">
+                                <p class="text-blue-900 text-base md:text-xl lg:text-2xl font-bold mt-2">{{ item.title }}</p>
+                                <p class="text-blue-900 text-sm md:text-lg lg:text-lg mt-5">{{ item.description }}</p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </p-carousel>
+            </div>
+        </section>
+    </div>    
+    <app-contact-sec></app-contact-sec>
+</div>

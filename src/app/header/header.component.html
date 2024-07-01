@@ -1,8 +1,7 @@
 <header class="bg-blue-900 text-white py-4 px-4">
-  <div class="container mx-auto flex justify-between items-center">
+  <div class="container mx-auto max-w-screen-lg flex justify-between items-center">
     <div class="flex items-center">
-      <a href="/" [ngClass]="{ 'text-white': isActive(''), 'text-gray-500': !isActive('') }"
-        class="flex flex-col items-center">
+      <a href="/" [ngClass]="{ 'text-white': isActive(''), 'text-gray-500': !isActive('') }" class="flex flex-col items-center">
         <img src="/img/logo.png" alt="Alpha Lubricants" class="h-12">
       </a>
     </div>
@@ -12,19 +11,15 @@
       </svg>
     </button>
     <nav id="menu" class="hidden md:flex space-x-8">
-
-      <a href="/products" [ngClass]="{ 'text-white': isActive('/products'), 'text-gray-500': !isActive('/products') }"
-        class="flex flex-col items-center">
+      <a href="/products" [ngClass]="{ 'text-white': isActive('/products'), 'text-gray-500': !isActive('/products') }" class="flex flex-col items-center">
         <img [src]="getImagePath('products')" alt="Nuestros productos" class="h-6 mb-2">
         <span>Productos</span>
       </a>
-      <a href="/about" [ngClass]="{ 'text-white': isActive('/about'), 'text-gray-500': !isActive('/about') }"
-        class="flex flex-col items-center">
+      <a href="/about" [ngClass]="{ 'text-white': isActive('/about'), 'text-gray-500': !isActive('/about') }" class="flex flex-col items-center">
         <img [src]="getImagePath('about')" alt="Acerca de nosotros" class="h-6 mb-2">
         <span>Acerca de nosotros</span>
       </a>
-      <a href="/contact" [ngClass]="{ 'text-white': isActive('/contact'), 'text-gray-500': !isActive('/contact') }"
-        class="flex flex-col items-center">
+      <a href="/contact" [ngClass]="{ 'text-white': isActive('/contact'), 'text-gray-500': !isActive('/contact') }" class="flex flex-col items-center">
         <img [src]="getImagePath('contact')" alt="Contáctanos" class="h-6 mb-2">
         <span>Contáctanos</span>
       </a>
@@ -33,15 +28,12 @@
 
   <!-- Mobile menu -->
   <div id="mobile-menu" class="fixed inset-0 top-0 right-0 bg-blue-900 text-white p-4 hidden md:hidden">
-    <div class="flex justify-between items-center mb-4">
-      <!-- Logo -->
+    <div class="container mx-auto max-w-screen-lg flex justify-between items-center mb-4">
       <div class="flex items-center">
-        <a href="/" [ngClass]="{ 'text-white': isActive(''), 'text-gray-500': !isActive('') }"
-          class="text-1xl space-x-2 flex items-center">
+        <a href="/" [ngClass]="{ 'text-white': isActive(''), 'text-gray-500': !isActive('') }" class="text-1xl space-x-2 flex items-center">
           <img src="/img/logo.png" alt="Alpha Lubricants" class="h-12">
         </a>
       </div>
-      <!-- Close button -->
       <button id="close-button">
         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -49,19 +41,15 @@
       </button>
     </div>
     <div class="flex flex-col space-y-4">
-
-      <a href="/products" [ngClass]="{ 'text-white': isActive('/products'), 'text-gray-500': !isActive('/products') }"
-        class="text-1xl space-x-2 flex items-center">
+      <a href="/products" [ngClass]="{ 'text-white': isActive('/products'), 'text-gray-500': !isActive('/products') }" class="text-1xl space-x-2 flex items-center">
         <img [src]="getImagePath('products')" alt="Nuestros productos" class="w-6 menu-icon">
         <span>Productos</span>
       </a>
-      <a href="/about" [ngClass]="{ 'text-white': isActive('/about'), 'text-gray-500': !isActive('/about') }"
-        class="text-1xl space-x-2 flex items-center">
+      <a href="/about" [ngClass]="{ 'text-white': isActive('/about'), 'text-gray-500': !isActive('/about') }" class="text-1xl space-x-2 flex items-center">
         <img [src]="getImagePath('about')" alt="Acerca de nosotros" class="w-6 menu-icon">
         <span>Acerca de nosotros</span>
       </a>
-      <a href="/contact" [ngClass]="{ 'text-white': isActive('/contact'), 'text-gray-500': !isActive('/contact') }"
-        class="text-1xl space-x-2 flex items-center">
+      <a href="/contact" [ngClass]="{ 'text-white': isActive('/contact'), 'text-gray-500': !isActive('/contact') }" class="text-1xl space-x-2 flex items-center">
         <img [src]="getImagePath('contact')" alt="Contáctanos" class="w-6 menu-icon">
         <span>Contáctanos</span>
       </a>

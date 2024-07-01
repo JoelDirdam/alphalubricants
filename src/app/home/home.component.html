@@ -1,79 +1,143 @@
 <div class="w-full">
-    <section
-        class="relative flex flex-col items-start justify-start h-screen w-full p-5 sm:pl-8 sm:pt-10 md:pl-20 md:pt-20 lg:pl-40 lg:pt-32 box-border overflow-hidden">
-        <div class="absolute z-0 top-0 left-0 w-full p-0 m-0">
-            <div class="w-full h-full flex justify-end items-end">
-                <img src="/assets/svg/home-section1.svg" alt="Imagen del Inicio" class="object-cover">
-            </div>
+    <!-- Sección Principal -->
+    <div class="relative">
+        <div class="absolute top-0 left-0 w-full h-auto max-h-[80vh] z-0 flex justify-end">
+            <img src="/assets/svg/home-section1.svg" alt="Imagen del Inicio" class="object-cover">
         </div>
-        <div class="relative z-10 max-w-1xl md:max-w-3xl pl-8 md:pl-16">
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900">Impulsa tu trabajo con la fuerza que dura</h1>
-            <p class="text-lg mt-4 text-blue-900 bg-slate-50 rounded-lg p-1 bg-opacity-80 md:bg-transparent">
-                Nuestro aceite de motor está diseñado para ofrecer un rendimiento excepcional en las condiciones más
-                exigentes. Con ingredientes de alta calidad y tecnología avanzada, garantiza que tus equipos funcionen
-                sin problemas, soportando las largas jornadas de trabajo y el uso intensivo. Confía en nuestra fórmula
-                para mantener tus herramientas en marcha, proporcionándote la durabilidad y la potencia que necesitas
-                para cumplir con tus proyectos más desafiantes.
-            </p>
-            <p-carousel [value]="carouselItems" [numVisible]="1" [numScroll]="1" [circular]="false"
-                [responsiveOptions]="responsiveOptions">
-                <ng-template let-item pTemplate="item">
-                    <div class="p-5 sm:pt-10 md:pt-20 lg:pt-32">
-                        <div [innerHTML]="item.content" class="w-full flex items-center justify-center"></div>
+        <section
+            class="container mx-auto max-w-screen-lg relative flex flex-col items-start justify-start h-screen md:h-[80vh] w-full p-5 sm:pt-10 md:pt-20 lg:pt-32 box-border overflow-hidden">
+            <div class="relative z-10 max-w-1xl md:max-w-3xl ">
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold text-blue-900">Impulsa tu trabajo con la fuerza
+                    que dura</h1>
+                <p class="text-lg mt-4 text-blue-900 bg-slate-50 rounded-lg p-1 bg-opacity-80 md:bg-transparent">
+                    Nuestro aceite de motor está diseñado para ofrecer un rendimiento excepcional en las condiciones más
+                    exigentes. Con ingredientes de alta calidad y tecnología avanzada, garantiza que tus equipos
+                    funcionen sin problemas, soportando las largas jornadas de trabajo y el uso intensivo. Confía en
+                    nuestra fórmula para mantener tus herramientas en marcha, proporcionándote la durabilidad y la
+                    potencia que necesitas para cumplir con tus proyectos más desafiantes.
+                </p>
+                <p-carousel [value]="carouselItems" [numVisible]="1" [numScroll]="1" [circular]="false"
+                    [responsiveOptions]="responsiveOptions">
+                    <ng-template let-item pTemplate="item">
+                        <div class="p-5 sm:pt-10 md:pt-20 lg:pt-32">
+                            <div [innerHTML]="item.content" class="w-full flex items-center justify-center"></div>
+                        </div>
+                    </ng-template>
+                </p-carousel>
+            </div>
+        </section>
+    </div>
+    <!-- Sección de Productos -->
+    <div class="bg-cover bg-center bg-our-products">
+        <section
+            class="container mx-auto max-w-screen-lg flex flex-col items-center justify-center h-screen md:h-[80vh] w-full p-5 box-border">
+            <div class="max-w-xl text-center">
+                <h1 class="text-2xl md:text-3xl text-white">Nuestros Productos</h1>
+            </div>
+            <p-carousel #productCarousel [value]="products" [numVisible]="3" [numScroll]="1"
+                [responsiveOptions]="responsiveOptions2" [autoplayInterval]="autoplayInterval"
+                class="w-full h-[50vh] mt-8 custom-carousel">
+                <ng-template let-product pTemplate="item">
+                    <div class="border-surface-border rounded m-2 p-3 cursor-pointer items-center justify-center flex flex-col"
+                        [ngClass]="{'selected-product': isSelected(product)}" (click)="selectProduct(product)">
+                        <div class="flex mb-3 mx-auto items-center justify-center">
+                            <div class="relative mx-auto">
+                                <img src="{{ product.image }}" [alt]="product.name"
+                                    class="h-full w-1/2 md:w-auto rounded" />
+                            </div>
+                        </div>
+                        <div class="mb-3 font- md:font-medium text-white">
+                            {{ product.name }}
+                        </div>
+                        <div *ngIf="isSelected(product)"
+                            class="text-white flex flex-col justify-end flex-grow w-auto ms:w-1/2 md:w-auto">
+                            <p class="text-sm md:text-base">{{ product.description | truncate:truncateLength }}</p>
+                            <div class="flex justify-end">
+                                <a (click)="routeToProducts(product, $event)"
+                                    class="text-white underline cursor-pointer text-sm md:text-base">más
+                                    información...</a>
+                            </div>
+                        </div>
                     </div>
                 </ng-template>
             </p-carousel>
-        </div>
-    </section>
-    <section class="flex flex-col items-center justify-center h-screen w-full p-5 box-border bg-cover bg-center"
-        style="background-image: url('/img/home/home_nuestros_productos.png');">
-        <div class="max-w-xl text-left">
-            <h1 class="text-2xl md:text-3xl text-white">Nuestros Productos</h1>
-        </div>
-        <p-carousel 
-            #productCarousel
-            [value]="products" 
-            [numVisible]="3" 
-            [numScroll]="1"
-            [responsiveOptions]="responsiveOptions2"
-            [autoplayInterval]="autoplayInterval"
-            class="w-full h-[70vh] mt-8 custom-carousel">
-            <ng-template let-product pTemplate="item">
-                <div 
-                  class="border-1 surface-border border-round m-2 p-3 cursor-pointer items-center justify-center flex flex-col"
-                  [ngClass]="{'selected-product': isSelected(product)}"
-                  (click)="selectProduct(product)">
-                    <div class="mb-3">
-                        <div class="relative mx-auto">
-                            <img src="{{ product.image }}" [alt]="product.name" class="h-full border-round" />
-                        </div>
-                    </div>
-                    <div class="mb-3 font-medium text-white">
-                        {{ product.name }}
-                    </div>
-                    <div *ngIf="isSelected(product)" class="text-white flex flex-col justify-end flex-grow">
-                      <p>{{ product.description | truncate:500 }}</p>
-                      <div class="flex justify-end">
-                          <a href="" (click)="routeToProducts(product, $event)" class="text-white underline cursor-pointer">más información...</a>
-                      </div>
+            <div class="w-full flex justify-end mt-4">
+                <a class="ml-4 px-10 py-2 bg-red-500 text-white rounded-lg hover:bg-red-700 transition-colors"
+                    href="/products">
+                    Todos nuestros productos →
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sección de Noticias -->
+    <div class="bg-news bg-fixed bg-cover">
+        <section
+            class="container mx-auto max-w-screen-lg flex flex-col items-center justify-center h-screen md:h-[80vh] w-full p-5 box-border">
+            <div class="max-w-4xl w-full text-center mb-1 md:mb-8">
+                <h1 class="text-2xl md:text-4xl text-blue-500 font-bold">Últimas noticias y actualizaciones</h1>
+            </div>
+            <!-- Grid para pantallas medianas y grandes -->
+            <div class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl w-full">
+                <div class="relative">
+                    <img src="/img/news/news1.png" alt="News 1"
+                        class="w-full h-64 md:h-48 lg:h-64 object-cover rounded-sm">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-start justify-start p-4">
+                        <p class="text-white text-lg font-medium text-shadow-md">Se parte de nuestro equipo y hazte
+                            distribuidor de nuestros productos</p>
                     </div>
                 </div>
-            </ng-template>
-        </p-carousel>
-        <div class="flex justify-end items-end">
-            <a class="ml-4 px-10 py-2 bg-red-500 text-white rounded-xlg hover:bg-red-700 transition-colors" href="/products">
-                Todos nuestros productos →
-            </a>
-        </div>
-    </section>
-    <section class="flex flex-col items-center justify-center h-screen w-full p-5 box-border">
-        <div class="max-w-xl text-left">
-            <h1 class="text-2xl md:text-3xl text-blue-900">Sección 3</h1>
-        </div>
-    </section>
-    <section class="flex flex-col items-center justify-center h-screen w-full p-5 box-border">
-        <div class="max-w-xl text-left">
-            <h1 class="text-2xl md:text-3xl text-blue-900">Sección 4</h1>
-        </div>
-    </section>
+                <div class="relative">
+                    <img src="/img/news/news2.png" alt="News 2"
+                        class="w-full h-64 md:h-48 lg:h-64 object-cover rounded-sm">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-start justify-start p-4">
+                        <p class="text-white text-lg font-medium text-shadow-md">Conoce nuestros centros de distribución
+                        </p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="/img/news/news3.png" alt="News 3"
+                        class="w-full h-64 md:h-48 lg:h-64 object-cover rounded-sm">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-start justify-start p-4">
+                        <p class="text-white text-lg font-medium text-shadow-md">¿Quieres ser parte de nuestro equipo?
+                        </p>
+                    </div>
+                </div>
+                <div class="relative md:col-span-2 lg:col-span-3">
+                    <img src="/img/news/news4.png" alt="News 4"
+                        class="w-full h-64 md:h-48 lg:h-64 object-cover rounded-sm">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-end justify-end p-4">
+                        <p class="text-white text-lg font-medium text-shadow-md">¡Gran apertura de nuestra bodega!</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Carrusel para pantallas pequeñas -->
+            <div class="block md:hidden w-full h-[50vh] mt-3 custom-carousel">
+                <p-carousel #newsCarousel [value]="news" [numVisible]="1" [numScroll]="1"
+                    [responsiveOptions]="responsiveOptions" [autoplayInterval]="autoplayInterval" class="w-full h-full">
+                    <ng-template let-newsItem pTemplate="item">
+                        <div
+                            class="relative m-2 p-3 cursor-pointer items-center justify-center flex flex-col">
+                            <div class="flex mb-3 mx-auto items-center justify-center">
+                                <div class="relative mx-auto">
+                                    <img src="{{ newsItem.image }}" [alt]="newsItem.title"
+                                        class="h-1/2 rounded" />
+                                </div>
+                            </div>
+                            <div class="mb-3 font-medium text-center">
+                                {{ newsItem.title }}
+                            </div>
+                            <!-- <div class="absolute inset-0 bg-black bg-opacity-50 flex items-start justify-start p-4">
+                                <p class="text-white text-lg font-medium text-shadow-md">{{ newsItem.description |
+                                    truncate:truncateLength }}</p>
+                            </div> -->
+                        </div>
+                    </ng-template>
+                </p-carousel>
+            </div>
+        </section>
+    </div>
+
+
+    <app-contact-sec></app-contact-sec>
 </div>

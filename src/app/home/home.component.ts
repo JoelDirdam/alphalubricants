@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CommonModule, ViewportScroller } from '@angular/common';
+import { Component, OnInit, AfterViewInit, ViewChild, HostListener } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { CurveCanvasComponent } from '../curve-canvas/curve-canvas.component';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
@@ -9,15 +9,17 @@ import { Inject } from '@angular/core';
 import { TagModule } from 'primeng/tag';
 import { PipesModule } from '../pipes/pipes.module';
 import { Carousel } from 'primeng/carousel';
+import $ from 'jquery';
+import { ContactSecComponent } from '../contact/contact-sec/contact-sec.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, CurveCanvasComponent, CarouselModule, ButtonModule, RouterModule, TagModule, PipesModule],
+  imports: [CommonModule, CurveCanvasComponent, CarouselModule, ButtonModule, RouterModule, TagModule, PipesModule, ContactSecComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('productCarousel') productCarousel!: Carousel;
 
   carouselItems = [
@@ -25,7 +27,7 @@ export class HomeComponent implements OnInit {
       content: `
         <div class="flex flex-row items-center">
           <img src="/img/home/home_image1.png" alt="Nuestros Productos" class="w-[63%]">
-          <a class="ml-4 px-4 py-3 bg-blue-900 text-white rounded-xlg hover:bg-blue-700 transition-colors" href="/products">
+          <a class="ml-2 md:ml-4 px-4 py-3 bg-blue-900 text-sm md:text-base text-white rounded-xlg hover:bg-blue-700 transition-colors" href="/products">
             Nuestros productos →
           </a>
         </div>
@@ -34,6 +36,13 @@ export class HomeComponent implements OnInit {
   ];
 
   products: any[] = [];
+  news: any[] = [
+    { image: '/img/news/news1.png', title: 'Se parte de nuestro equipo y hazte distribuidor de nuestros productos', description: 'Descripción de la noticia 1' },
+    { image: '/img/news/news2.png', title: 'Conoce nuestros centros de distribución', description: 'Descripción de la noticia 2' },
+    { image: '/img/news/news3.png', title: '¿Quieres ser parte de nuestro equipo?', description: 'Descripción de la noticia 3' },
+    { image: '/img/news/news4.png', title: '¡Gran apertura de nuestra bodega!', description: 'Descripción de la noticia 4' }
+  ];
+  truncateLength: number = 400;
   autoplayInterval: number | null = 5000;
 
   responsiveOptions = [
@@ -72,14 +81,31 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  constructor(
-    @Inject(ProductService) private productService: ProductService, 
-    private router: Router,
-    private viewportsScroller: ViewportScroller
-  ) {}
+  constructor(@Inject(ProductService) private productService: ProductService, private router: Router) {}
 
   ngOnInit() {
     this.products = this.productService.getProducts();
+    this.updateTruncateLength(window.innerWidth);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.updateTruncateLength(event.target.innerWidth);
+  }
+
+  updateTruncateLength(width: number) {
+    this.truncateLength = width < 768 ? 60 : 400;
+  }
+
+  ngAfterViewInit() {
+    // Manipulación del DOM con jQuery
+    //console.log($('.p-ripple'));
+    $('.p-ripple').css({
+      'background-color': 'white',
+    });
+    $('.p-ripple').css({
+      'background-color': 'white',
+    });
   }
 
   selectProduct(product: any) {
@@ -91,10 +117,9 @@ export class HomeComponent implements OnInit {
   }
 
   routeToProducts(product: any, event: Event) {
-    event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+    event.preventDefault();
     this.productService.setSelectedProduct(product);
     this.router.navigate(['/products']);
-    this.viewportsScroller.scrollToPosition([0, 0]);
   }
 
   isSelected(product: any) {

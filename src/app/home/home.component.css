@@ -8,10 +8,16 @@
 }
 
 .selected-product img { 
-    width: 100%; /* Asegura que la imagen se ajuste al contenedor */
+    width: 50%; /* Asegura que la imagen se ajuste al contenedor */
 }
 
 .selected-product p {
     margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+    .selected-product img { 
+        width: 100%; /* Asegura que la imagen se ajuste al contenedor */
+    }
 }
   
