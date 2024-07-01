@@ -30,6 +30,7 @@ export class ProductsComponent implements AfterViewInit, OnDestroy, OnInit {
     this.selectedProduct = product;
     this.filteredProducts = this.products.filter(p => p !== product);
     $('.selected-product-container').hide().fadeIn(500); // Animación de deslizamiento
+    this.scrollToTop(); // Desplazamiento suave hacia arriba
     this.onResize();
   }
 
@@ -79,5 +80,12 @@ export class ProductsComponent implements AfterViewInit, OnDestroy, OnInit {
     setTimeout(() => {
       this.initLayout();
     }, 0);
+  }
+
+  private scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 }
