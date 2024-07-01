@@ -20,4 +20,8 @@
         width: 100%; /* Asegura que la imagen se ajuste al contenedor */
     }
 }
+
+.custom-carousel {
+    touch-action: pan-y;
+}
   

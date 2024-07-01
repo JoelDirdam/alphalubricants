@@ -17,7 +17,7 @@
                     potencia que necesitas para cumplir con tus proyectos más desafiantes.
                 </p>
                 <p-carousel [value]="carouselItems" [numVisible]="1" [numScroll]="1" [circular]="false"
-                    [responsiveOptions]="responsiveOptions">
+                    [responsiveOptions]="responsiveOptions" class="custom-carousel">
                     <ng-template let-item pTemplate="item">
                         <div class="p-5 sm:pt-10 md:pt-20 lg:pt-32">
                             <div [innerHTML]="item.content" class="w-full flex items-center justify-center"></div>
@@ -112,16 +112,16 @@
                 </div>
             </div>
             <!-- Carrusel para pantallas pequeñas -->
-            <div class="block md:hidden w-full h-[50vh] mt-3 custom-carousel">
+            <div class="block md:hidden w-full h-[50vh] mt-3">
                 <p-carousel #newsCarousel [value]="news" [numVisible]="1" [numScroll]="1"
-                    [responsiveOptions]="responsiveOptions" [autoplayInterval]="autoplayInterval" class="w-full h-full">
+                    [responsiveOptions]="responsiveOptions" [autoplayInterval]="autoplayInterval" class="w-full h-full custom-carousel">
                     <ng-template let-newsItem pTemplate="item">
                         <div
                             class="relative m-2 p-3 cursor-pointer items-center justify-center flex flex-col">
                             <div class="flex mb-3 mx-auto items-center justify-center">
                                 <div class="flex flex-row relative mx-auto items-center justify-center">
                                     <img src="{{ newsItem.image }}" [alt]="newsItem.title"
-                                        class="h-auto w-1/2 rounded" />
+                                        class="rounded max-h-[40vh]" />
                                 </div>
                             </div>
                             <div class="mb-3 font-medium text-center">

@@ -1,11 +1,10 @@
-import { Component, OnInit, AfterViewInit, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, HostListener, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CurveCanvasComponent } from '../curve-canvas/curve-canvas.component';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule, Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
-import { Inject } from '@angular/core';
 import { TagModule } from 'primeng/tag';
 import { PipesModule } from '../pipes/pipes.module';
 import { Carousel } from 'primeng/carousel';
@@ -46,39 +45,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
   autoplayInterval: number | null = 5000;
 
   responsiveOptions = [
-    {
-      breakpoint: '1199px',
-      numVisible: 1,
-      numScroll: 1
-    },
-    {
-      breakpoint: '991px',
-      numVisible: 1,
-      numScroll: 1
-    },
-    {
-      breakpoint: '767px',
-      numVisible: 1,
-      numScroll: 1
-    }
+    { breakpoint: '1199px', numVisible: 1, numScroll: 1 },
+    { breakpoint: '991px', numVisible: 1, numScroll: 1 },
+    { breakpoint: '767px', numVisible: 1, numScroll: 1 }
   ];
 
   responsiveOptions2 = [
-    {
-      breakpoint: '1199px',
-      numVisible: 2,
-      numScroll: 2
-    },
-    {
-      breakpoint: '991px',
-      numVisible: 1,
-      numScroll: 1
-    },
-    {
-      breakpoint: '767px',
-      numVisible: 1,
-      numScroll: 1
-    }
+    { breakpoint: '1199px', numVisible: 2, numScroll: 2 },
+    { breakpoint: '991px', numVisible: 1, numScroll: 1 },
+    { breakpoint: '767px', numVisible: 1, numScroll: 1 }
   ];
 
   constructor(@Inject(ProductService) private productService: ProductService, private router: Router) {}
@@ -86,6 +61,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.products = this.productService.getProducts();
     this.updateTruncateLength(window.innerWidth);
+    if (window.innerWidth < 768) {
+      this.news[3]['image'] = '/img/news/news4-rec.png';
+    }
   }
 
   @HostListener('window:resize', ['$event'])
@@ -99,12 +77,42 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     // Manipulación del DOM con jQuery
-    //console.log($('.p-ripple'));
     $('.p-ripple').css({
       'background-color': 'white',
     });
-    $('.p-ripple').css({
-      'background-color': 'white',
+
+    $('.custom-carousel').on('touchstart', (event: any) => {
+      const startY = event.touches[0].clientY;
+      const startX = event.touches[0].clientX;
+      let isVerticalScroll = false;
+
+      const touchMoveHandler = (moveEvent: any) => {
+        const currentY = moveEvent.touches[0].clientY;
+        const currentX = moveEvent.touches[0].clientX;
+        const diffY = currentY - startY;
+        const diffX = currentX - startX;
+
+        // Si la diferencia en Y es mayor que en X, significa que el usuario se está desplazando verticalmente
+        if (Math.abs(diffY) > Math.abs(diffX)) {
+          isVerticalScroll = true;
+          // Permitir el desplazamiento vertical
+          $(moveEvent.currentTarget).css('overflow-y', 'auto');
+        } else {
+          // Prevenir el desplazamiento horizontal
+          moveEvent.preventDefault();
+        }
+      };
+
+      const touchEndHandler = (endEvent: any) => {
+        if (isVerticalScroll) {
+          $(endEvent.currentTarget).css('overflow-y', 'hidden');
+        }
+        $(endEvent.currentTarget).off('touchmove', touchMoveHandler);
+        $(endEvent.currentTarget).off('touchend', touchEndHandler);
+      };
+
+      $(event.currentTarget).on('touchmove', touchMoveHandler);
+      $(event.currentTarget).on('touchend', touchEndHandler);
     });
   }
 
